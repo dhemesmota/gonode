@@ -4,6 +4,7 @@
 const Route = use('Route')
 
 Route.post('users', 'UserController.store').validator('User')
+Route.put('users/:id', 'UserController.update')
 Route.post('sessions', 'SessionController.store').validator('Session')
 
 Route.post('passwords', 'ForgotPasswordController.store').validator(
@@ -27,7 +28,8 @@ Route.group(() => {
           ['Project']
         ]
       ]
-    ))
+    )).middleware(['is:(administrator)'])
+
   Route.resource('projects.tasks', 'TaskController')
     .apiOnly()
     .validator(new Map(
@@ -38,4 +40,7 @@ Route.group(() => {
         ]
       ]
     ))
+
+  Route.resource('permissions', 'PermissionController').apiOnly()
+  Route.resource('roles', 'RoleController').apiOnly()
 }).middleware(['auth'])

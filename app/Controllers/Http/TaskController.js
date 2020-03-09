@@ -14,8 +14,14 @@ class TaskController {
    * Show a list of all tasks.
    * GET tasks
    */
-  async index ({ params, request }) {
+  async index ({ params, request, response, auth }) {
     const { page } = request.get()
+
+    // Can
+    const user = await auth.getUser()
+    if (!(await user.can('read_prive_projects'))) {
+      return response.status(403).send({ error: { message: 'Você não tem permissão de acesso a rota' } })
+    }
 
     const tasks = await Task.query()
       .where('project_id', params.projects_id)
