@@ -1,12 +1,14 @@
 const { test, trait, afterEach } = use('Test/Suite')('Permission registration')
 
 const User = use('App/Models/User')
+const Permission = use('Permission')
 
 trait('Test/ApiClient')
 trait('Auth/Client')
 
 afterEach(async () => {
   await User.query().delete()
+  await Permission.query().delete()
 })
 
 test('criar uma permissão', async ({ client }) => {
