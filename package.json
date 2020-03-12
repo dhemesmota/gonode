@@ -28,6 +28,7 @@
     "@adonisjs/mail": "^3.0.10",
     "@adonisjs/redis": "^2.0.7",
     "@adonisjs/validator": "^5.0.6",
+    "@adonisjs/vow": "^1.0.17",
     "@sentry/node": "^5.13.0",
     "adonis-acl": "^1.1.1",
     "adonis-kue": "^5.0.1",
@@ -41,7 +42,8 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "sqlite3": "^4.1.1"
   },
   "autoload": {
     "App": "./app"
